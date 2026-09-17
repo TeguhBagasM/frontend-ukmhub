@@ -6,7 +6,7 @@ import { z } from 'zod'
 
 import { useCreateEvent, useUpdateEvent } from '../../../hooks/use-events'
 import { getErrorMessage } from '../../../lib/errors'
-import { slugify, toInputDatetimeLocal } from '../../../lib/format'
+import { slugify, toInputDatetimeLocal, toISOStringOrUndefined } from '../../../lib/format'
 import type { Event } from '../../../lib/types'
 import { Button } from '../../ui/Button'
 import { Input } from '../../ui/Input'
@@ -100,10 +100,10 @@ export function EventFormModal({ open, onClose, organizationId, event }: EventFo
       slug: slugify(values.slug),
       description: values.description || undefined,
       location: values.location || undefined,
-      start_date: values.start_date || undefined,
-      end_date: values.end_date || undefined,
-      registration_start: values.registration_start || undefined,
-      registration_end: values.registration_end || undefined,
+      start_date: toISOStringOrUndefined(values.start_date),
+      end_date: toISOStringOrUndefined(values.end_date),
+      registration_start: toISOStringOrUndefined(values.registration_start),
+      registration_end: toISOStringOrUndefined(values.registration_end),
       quota: values.quota ? Number(values.quota) : undefined,
       status: values.status,
     }

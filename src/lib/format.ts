@@ -65,6 +65,12 @@ export function toInputDatetimeLocal(value?: string): string {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`
 }
 
+export function toISOStringOrUndefined(value?: string): string | undefined {
+  if (!value) return undefined
+  const date = new Date(value)
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString()
+}
+
 export function slugify(value: string): string {
   return value
     .toLowerCase()
