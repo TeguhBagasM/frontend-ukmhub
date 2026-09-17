@@ -10,6 +10,7 @@ import { buttonStyles } from '../ui/button-styles'
 import { Logo } from '../ui/Logo'
 
 const links = [
+  { label: 'Event', href: '/events' },
   { label: 'Jelajahi', href: '/#jelajahi' },
   { label: 'Kegiatan', href: '/#kegiatan' },
   { label: 'Tentang', href: '/#tentang' },

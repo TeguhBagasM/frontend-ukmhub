@@ -14,6 +14,10 @@ npm run dev
 Dev server berjalan di `http://localhost:5173`. Permintaan ke `/api` diteruskan (proxy) ke
 backend Go di `http://localhost:8080` — pastikan backend dan PostgreSQL aktif lebih dulu.
 
+Untuk production, salin `.env.example` menjadi `.env.local` saat pengembangan atau atur
+`VITE_API_BASE_URL` di Environment Variables Vercel. Nilainya adalah base URL API tanpa
+`/public`, misalnya `https://ukm-hub.vercel.app/api/v1`.
+
 ## Skrip
 
 | Perintah | Fungsi |
