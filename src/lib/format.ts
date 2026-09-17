@@ -33,3 +33,43 @@ export function greeting(date = new Date()): string {
   if (hour < 19) return 'Selamat sore'
   return 'Selamat malam'
 }
+
+function toDate(value?: string): Date | null {
+  if (!value) return null
+  const date = new Date(value.replace(' ', 'T'))
+  return Number.isNaN(date.getTime()) ? null : date
+}
+
+export function formatDateTimeID(value?: string): string {
+  const date = toDate(value)
+  if (!date) return value ?? '—'
+
+  return new Intl.DateTimeFormat('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(date)
+}
+
+export function formatNumberID(value?: number): string {
+  if (value == null) return '—'
+  return new Intl.NumberFormat('id-ID').format(value)
+}
+
+export function toInputDatetimeLocal(value?: string): string {
+  const date = toDate(value)
+  if (!date) return ''
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`
+}
+
+export function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+}

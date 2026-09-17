@@ -2,16 +2,19 @@ import type { HTMLAttributes } from 'react'
 
 import { cn } from '../../lib/cn'
 
-type Tone = 'neutral' | 'emerald' | 'marigold'
+type Tone = 'neutral' | 'emerald' | 'marigold' | 'clay'
 
 const tones: Record<Tone, string> = {
   neutral: 'border-hairline-strong text-muted',
   emerald: 'border-moss-strong bg-moss text-emerald-ink',
   marigold: 'border-marigold/40 bg-marigold/10 text-marigold',
+  clay: 'border-clay/30 bg-clay/10 text-clay',
 }
 
+export type BadgeTone = Tone
+
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  tone?: Tone
+  tone?: BadgeTone
 }
 
 export function Badge({ tone = 'neutral', className, ...props }: BadgeProps) {
