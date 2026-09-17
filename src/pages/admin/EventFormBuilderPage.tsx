@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Copy, Eye, GripVertical, ListChecks, Plus, Save } from 'lucide-react'
+import { Eye, GripVertical, ListChecks, Plus, Save } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useParams } from 'react-router-dom'

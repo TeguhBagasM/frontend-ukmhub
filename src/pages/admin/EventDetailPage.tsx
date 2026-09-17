@@ -2,16 +2,16 @@ import { Archive, ArrowUpFromDot, CalendarClock, Download, Inbox, ListChecks, Ma
 import { useParams } from 'react-router-dom'
 import { toast } from 'sonner'
 
-import { Button } from '../components/ui/Button'
-import { Card, CardDescription, CardHeader, CardTitle } from '../components/ui/Card'
-import { PageHeader } from '../components/ui/PageHeader'
-import { QueryState } from '../components/ui/QueryState'
-import { EventStatusBadge } from '../components/ui/StatusBadge'
-import { buttonStyles } from '../components/ui/button-styles'
-import { useEventStatus, useEvent } from '../hooks/use-events'
-import { useExportRegistrationsCsv } from '../hooks/use-exports'
-import { getErrorMessage } from '../lib/errors'
-import { formatDateTimeID, formatNumberID } from '../lib/format'
+import { Button } from '../../components/ui/Button'
+import { Card, CardDescription, CardHeader, CardTitle } from '../../components/ui/Card'
+import { PageHeader } from '../../components/ui/PageHeader'
+import { QueryState } from '../../components/ui/QueryState'
+import { EventStatusBadge } from '../../components/ui/StatusBadge'
+import { buttonStyles } from '../../components/ui/button-styles'
+import { useEventStatus, useEvent } from '../../hooks/use-events'
+import { useExportRegistrationsCsv } from '../../hooks/use-exports'
+import { getErrorMessage } from '../../lib/errors'
+import { formatDateTimeID, formatNumberID } from '../../lib/format'
 
 export function EventDetailPage() {
   const { eventId, id: orgId } = useParams<{ id: string; eventId: string }>()

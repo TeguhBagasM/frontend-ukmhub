@@ -4,15 +4,15 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { useCreateOrganization, useUpdateOrganization } from '../../hooks/use-organizations'
-import { getErrorMessage } from '../../lib/errors'
-import { slugify } from '../../lib/format'
-import type { Organization } from '../../lib/types'
-import { Button } from '../ui/Button'
-import { Input } from '../ui/Input'
-import { Modal } from '../ui/Modal'
-import { Select } from '../ui/Select'
-import { Textarea } from '../ui/Textarea'
+import { useCreateOrganization, useUpdateOrganization } from '../../../hooks/use-organizations'
+import { getErrorMessage } from '../../../lib/errors'
+import { slugify } from '../../../lib/format'
+import type { Organization } from '../../../lib/types'
+import { Button } from '../../ui/Button'
+import { Input } from '../../ui/Input'
+import { Modal } from '../../ui/Modal'
+import { Select } from '../../ui/Select'
+import { Textarea } from '../../ui/Textarea'
 
 const schema = z.object({
   name: z.string().trim().min(3, 'Nama minimal 3 karakter.'),
@@ -68,7 +68,6 @@ export function OrganizationFormModal({ open, onClose, organization }: Organizat
     register,
     handleSubmit,
     reset,
-    watch,
     setValue,
     formState: { errors },
   } = useForm<FormValues>({
@@ -79,8 +78,6 @@ export function OrganizationFormModal({ open, onClose, organization }: Organizat
   useEffect(() => {
     if (open) reset(toValues(organization))
   }, [open, organization, reset])
-
-  const name = watch('name')
 
   function autoSlug(event: React.SyntheticEvent<HTMLInputElement>) {
     const value = event.currentTarget.value

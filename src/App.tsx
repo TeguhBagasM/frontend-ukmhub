@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Suspense, lazy } from 'react'
-import type { ReactNode } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import { Toaster } from 'sonner'
 
 import { AdminLayout } from './components/layout/AdminLayout'
@@ -10,9 +9,8 @@ import { GuestRoute } from './components/layout/GuestRoute'
 import { Navbar } from './components/layout/Navbar'
 import { ProtectedRoute } from './components/layout/ProtectedRoute'
 import { ScrollToTop } from './components/layout/ScrollToTop'
-import { Container } from './components/ui/Container'
-import { Spinner } from './components/ui/Spinner'
 import { HomePage } from './pages/HomePage'
+import { Spinner } from './components/ui/Spinner'
 
 const DashboardPage = lazy(() =>
   import('./pages/DashboardPage').then((module) => ({ default: module.DashboardPage })),
@@ -86,14 +84,6 @@ const MemberDetailPage = lazy(() =>
   import('./pages/admin/MemberDetailPage').then((module) => ({ default: module.MemberDetailPage })),
 )
 
-function RouteFallback() {
-  return (
-    <Container className="flex min-h-[60vh] items-center justify-center">
-      <Spinner className="size-5 text-emerald" />
-    </Container>
-  )
-}
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -103,11 +93,11 @@ const queryClient = new QueryClient({
   },
 })
 
-function AppLayout({ children }: { children: ReactNode }) {
+function AppLayout() {
   return (
     <div className="flex min-h-dvh flex-col bg-paper">
       <Navbar />
-      {children}
+      <Outlet />
       <Footer />
     </div>
   )

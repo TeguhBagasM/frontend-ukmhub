@@ -38,7 +38,7 @@ const schema = z
     ]),
     placeholder: z.string().optional(),
     description: z.string().optional(),
-    required: z.boolean().default(false),
+    required: z.boolean(),
     optionsText: z.string().optional(),
   })
   .superRefine((values, ctx) => {

@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import type { UseFormRegister } from 'react-hook-form'
+import type { UseFormGetValues, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 
 import { Checkbox } from '../ui/Checkbox'
 import { Input } from '../ui/Input'
@@ -14,8 +14,8 @@ interface DynamicFormFieldProps {
   field: FormField
   name: string
   register: UseFormRegister<DynamicFormValues>
-  setValue: (name: string, value: string) => void
-  getValues: (name: string) => string
+  setValue: UseFormSetValue<DynamicFormValues>
+  getValues: UseFormGetValues<DynamicFormValues>
   error?: string
 }
 

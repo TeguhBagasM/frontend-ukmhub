@@ -78,7 +78,6 @@ export function EventFormModal({ open, onClose, organizationId, event }: EventFo
     register,
     handleSubmit,
     reset,
-    watch,
     setValue,
     formState: { errors },
   } = useForm<FormValues>({ resolver: zodResolver(schema), defaultValues: emptyValues })
@@ -86,8 +85,6 @@ export function EventFormModal({ open, onClose, organizationId, event }: EventFo
   useEffect(() => {
     if (open) reset(toValues(event))
   }, [open, event, reset])
-
-  const name = watch('name')
 
   function autoSlug(eventHandler: React.SyntheticEvent<HTMLInputElement>) {
     if (!event) {

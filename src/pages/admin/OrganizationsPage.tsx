@@ -1,6 +1,6 @@
 import { Building2, ExternalLink, Pencil, Plus, Trash2 } from 'lucide-react'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
 import { useDeleteOrganization, useOrganizations } from '../../hooks/use-organizations'
